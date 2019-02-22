@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Infrastructure\Ui\Web\Symfony;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
