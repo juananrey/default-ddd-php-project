@@ -1,4 +1,4 @@
-PHP-FPM + Nginx basic Docker container
+PHP-FPM basic Docker container
 --------------------------------------
 
 This is a slightly tuned,basic subset 

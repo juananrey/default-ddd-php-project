@@ -2,9 +2,11 @@ Basic Symfony Flex Project With Docker + PHPUnit + PHPCS
 --------------------------------------------------------
 
 Basic skeleton containing just a `/_healthcheck` endpoint, and including:
-- Dockerized startup (with PHP-FPM + nginx, check `/docker` folder and the `README.md` in there).
+- Dockerized startup (with PHP-FPM, check `/docker` folder and the `README.md` in there).
 - PHPUnit (run `bin/phpunit` to pass the unit tests).
 - PHPCS (symlink to `/vendor/bin/phpcs`, run `bin/phpcs` to run a code sniffer based on PSR2 standard).
+
+If you want to include Redis in your project, run `docker-compose -f docker-compose-with-redis.yml up -d`
 
 ## Requirements
 - Docker
