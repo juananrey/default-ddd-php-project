@@ -23,6 +23,7 @@ services:
       - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
 
   redis:
+    container_name: mylocalproject-redis
     hostname: redis
     image: redis:4
     ports:
