@@ -12,7 +12,7 @@ class HealthCheckControllerUnitTest extends TestCase
      */
     private $healthCheckController;
 
-    function setUp()
+    public function setUp()
     {
         parent::setUp();
         $this->healthCheckController = new HealthCheckController();

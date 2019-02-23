@@ -22,3 +22,13 @@ If you want to include Redis in your project, run `docker-compose -f docker-comp
 ```
 
 Now, it is completely up to you how do you want your project to grow :)
+
+## Going to production
+If you consider the dockerized environment good enough to production, remember these two steps:
+1) Run `composer install --no-dev --classmap-authoritative --apcu-autoloader`
+2) Remember to change `APP_ENV` to `prod` within the `.env` file.
+
+You can see a reasonably good performance by executing
+[Apache Bench tool](https://httpd.apache.org/docs/2.4/programs/ab.html),
+with around 100s of requests in 10s concurrent:
+`ab -n 100 -c 10 http://localhost:8000/_healthcheck`
