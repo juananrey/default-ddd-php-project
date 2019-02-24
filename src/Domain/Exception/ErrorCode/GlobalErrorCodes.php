@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exception\ErrorCode;
+namespace App\Domain\Exception\ErrorCode;
 
 final class GlobalErrorCodes
 {

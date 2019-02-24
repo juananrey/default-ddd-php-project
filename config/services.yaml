@@ -15,17 +15,16 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
-    App\Controller\:
-        resource: '../src/Controller'
+    App\Infrastructure\Ui\Web\Symfony\Controller\:
+        resource: '../src/Infrastructure/Ui/Web/Symfony/Controller'
         tags: ['controller.service_arguments']
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-    App\EventListener\ExceptionListener:
+    App\Infrastructure\EventListener\Symfony\ExceptionListener:
         arguments: ['%env(APP_ENV)%']
         tags:
             - { name: kernel.event_listener, event: kernel.exception }

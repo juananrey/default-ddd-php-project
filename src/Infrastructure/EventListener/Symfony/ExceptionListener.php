@@ -1,9 +1,9 @@
 <?php
 
-namespace App\EventListener;
+namespace App\Infrastructure\EventListener\Symfony;
 
-use App\Exception\AppException;
-use App\Exception\ErrorCode\GlobalErrorCodes;
+use App\Domain\Exception\AppException;
+use App\Domain\Exception\ErrorCode\GlobalErrorCodes;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 /**
  * This listener receives ALL errors within the application and will always return the errors in a JSON format
  */
-class ExceptionListener
+final class ExceptionListener
 {
     /**
      * @var string
@@ -30,7 +30,7 @@ class ExceptionListener
         $response = new JsonResponse();
 
         if ($exception instanceof AppException) {
-            $response->setStatusCode($exception->getHttpErrorCode());
+            $response->setStatusCode($this->buildHttpErrorCodeFromInternalErrorCode($exception->internalErrorCode()));
         } elseif ($exception instanceof HttpExceptionInterface) {
             $response->setStatusCode($exception->getStatusCode());
         } else {
@@ -51,7 +51,7 @@ class ExceptionListener
     {
         $errorMessage = [];
         if ($exception instanceof AppException) {
-            $errorMessage['errorCode'] = $exception->getInternalErrorCode();
+            $errorMessage['errorCode'] = $exception->internalErrorCode();
         } else {
             $errorMessage['errorCode'] = GlobalErrorCodes::INTERNAL_SERVER_DRAMA;
         }
@@ -73,5 +73,14 @@ class ExceptionListener
     private function isProductionEnvironment(): bool
     {
         return in_array($this->environment, ['pre', 'pro']);
+    }
+
+    private function buildHttpErrorCodeFromInternalErrorCode(string $internalErrorCode): string
+    {
+        switch ($internalErrorCode) {
+            case GlobalErrorCodes::INTERNAL_SERVER_DRAMA:
+            default:
+                return Response::HTTP_INTERNAL_SERVER_ERROR;
+        }
     }
 }

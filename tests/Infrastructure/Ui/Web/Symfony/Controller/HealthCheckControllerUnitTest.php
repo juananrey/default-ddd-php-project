@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Test\Controller;
+namespace App\Test\Infrastructure\Ui\Web\Symfony\Controller;
 
+use App\Infrastructure\Ui\Web\Symfony\Controller\HealthCheckController;
 use PHPUnit\Framework\TestCase;
-use App\Controller\HealthCheckController;
 
 class HealthCheckControllerUnitTest extends TestCase
 {
@@ -12,7 +12,7 @@ class HealthCheckControllerUnitTest extends TestCase
      */
     private $healthCheckController;
 
-    function setUp()
+    public function setUp()
     {
         parent::setUp();
         $this->healthCheckController = new HealthCheckController();

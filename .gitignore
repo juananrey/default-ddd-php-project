@@ -1,5 +1,10 @@
+###> MISC ###
+/composer.lock
+/tests/.gitignore
+###< MISC ###
+
 ###> symfony/framework-bundle ###
-/.env
+/symfony.lock
 /public/bundles/
 /var/
 /vendor/
@@ -11,5 +16,8 @@
 
 ###> symfony/phpunit-bridge ###
 .phpunit
-/phpunit.xml
 ###< symfony/phpunit-bridge ###
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+###< squizlabs/php_codesniffer ###
