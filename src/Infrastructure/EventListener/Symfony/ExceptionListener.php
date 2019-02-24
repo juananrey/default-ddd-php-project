@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 /**
  * This listener receives ALL errors within the application and will always return the errors in a JSON format
  */
-class ExceptionListener
+final class ExceptionListener
 {
     /**
      * @var string
