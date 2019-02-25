@@ -4,12 +4,13 @@
     "require": {
         "php": ">=7.1",
         "ext-iconv": "*",
+        "ramsey/uuid": "^3.8",
         "symfony/flex": "^1.2",
         "symfony/console": "^4.0",
         "symfony/framework-bundle": "^4.0",
         "symfony/yaml": "^4.0",
         "symfony/dotenv": "^4.0",
-        "sensio/framework-extra-bundle": "^5.1"
+        "sensio/framework-extra-bundle": "^5.2"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^4.0",
@@ -59,7 +60,7 @@
         "public-dir": "config",
         "symfony": {
             "id": "01CB1JHRG03VB782ZT4KPQ8DCT",
-            "allow-contrib": false
+            "allow-contrib": true
         }
     }
 }

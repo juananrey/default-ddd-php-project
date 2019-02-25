@@ -59,15 +59,18 @@ Domain
 
 Application
 └─── Command: Executes an use case by orchestrating domain objects, and ideally produces an output in the shape of an event
+|    └─── Request: Value objects representing a request per command
 |
 └─── Query: Interfaces of specialized queries (anythin different of a `findOfId`) to the model.
      |      Note: those are part of the Application because the Domain should not be aware at all about the expected Responses
-     └─── Responses: Set of Value Objects which we expect to obtain as a result of the query, ideally implementing a `Serializable`
+     └─── Request: Value objects representing a request per query
+     └─── Response: Set of Value Objects which we expect to obtain as a result of the query, ideally implementing a `Serializable`
 
 
 Infrastructure
 └───  EventListener: Even though those could be part of the Application layer (as actors regarding different events), 
 |                    right now they are an infrastructure concern as the infra too is implemented as an Event schema.
+|                    This could be different depending on your framework of choice (e.g. in Zend they would be middlewares)
 |
 └───  Query: Contains folders with the different sources of implementation per query (e.g., `MySqlPremiumUsersQuery`)
 |

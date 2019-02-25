@@ -3,7 +3,7 @@
 namespace App\Infrastructure\EventListener\Symfony;
 
 use App\Domain\Exception\AppException;
-use App\Domain\Exception\ErrorCode\GlobalErrorCodes;
+use App\Domain\Exception\ErrorCodes;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,7 +53,7 @@ final class ExceptionListener
         if ($exception instanceof AppException) {
             $errorMessage['errorCode'] = $exception->internalErrorCode();
         } else {
-            $errorMessage['errorCode'] = GlobalErrorCodes::INTERNAL_SERVER_DRAMA;
+            $errorMessage['errorCode'] = ErrorCodes::INTERNAL_SERVER_DRAMA;
         }
 
         $errorMessage['errorMessage'] = $exception->getMessage();
@@ -78,7 +78,7 @@ final class ExceptionListener
     private function buildHttpErrorCodeFromInternalErrorCode(string $internalErrorCode): string
     {
         switch ($internalErrorCode) {
-            case GlobalErrorCodes::INTERNAL_SERVER_DRAMA:
+            case ErrorCodes::INTERNAL_SERVER_DRAMA:
             default:
                 return Response::HTTP_INTERNAL_SERVER_ERROR;
         }
