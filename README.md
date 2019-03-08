@@ -49,7 +49,8 @@ Domain
 |                (important, taking into account that e.g. HTTP error codes sometimes are not informative enough)
 |
 └─── Model: Core business logic within the aplication, which will also contain validations for correctness.
-|           In case that we use events through the system (e.g. creation, updates...) they would be placed here as well
+|           In case that we use events through the system (e.g. creation, updates...) they would be placed here as well.
+|           It will contain behavior and data, following[DomainModel](https://martinfowler.com/eaaCatalog/domainModel.html) Martin Fowler's pattern 
 |
 └─── Repository: Interfaces to access the data model that shall be viewed as a Collection,  with a composition as follows:
      └─── `findOfId`: Find a specific Model from a given unique ID. Ideally returns a Domain exception when not found
